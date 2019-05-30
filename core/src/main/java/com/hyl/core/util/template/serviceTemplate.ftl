@@ -47,4 +47,5 @@ public interface ${entity + "Service"} {
      * @throws BizException
     */
     int update${entity}(${entity+"Model"} model) throws BizException;
+
 }

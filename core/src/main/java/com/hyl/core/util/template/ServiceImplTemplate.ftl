@@ -142,4 +142,5 @@ public class ${entity + "ServiceImpl"} implements ${entity + "Service"} {
             throw new BizException(ErrorCode.SYSTEM_FAILED);
         }
     }
+
 }
