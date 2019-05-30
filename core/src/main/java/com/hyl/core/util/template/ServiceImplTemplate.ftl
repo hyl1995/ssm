@@ -107,4 +107,39 @@ public class ${entity + "ServiceImpl"} implements ${entity + "Service"} {
             throw new BizException(ErrorCode.DATABASE_QUERY_ERROR);
         }
     }
+
+    /**
+     * 新增对象
+     * @param model
+     * @return
+     * @throws BizException
+    */
+    @Override
+    public int save${entity}(${entity+"Model"} model) throws BizException{
+        try {
+            ${entity} ${entityName} = ObjectUtils.build(${entity }.class, model);
+            ${entityName}.setGmtCreate(DateUtil.getNow());
+            ${entityName}.setGmtUpdate(DateUtil.getNow());
+            return ${entityName + "Mapper"}.insertSelective(${entityName});
+        }catch (Exception e){
+            throw new BizException(ErrorCode.SYSTEM_FAILED);
+        }
+    }
+
+    /**
+     * 修改对象
+     * @param model
+     * @return
+     * @throws BizException
+    */
+    @Override
+    public int update${entity}(${entity+"Model"} model) throws BizException{
+        try {
+            ${entity} ${entityName} = ObjectUtils.build(${entity }.class, model);
+            ${entityName}.setGmtUpdate(DateUtil.getNow());
+            return ${entityName + "Mapper"}.updateByPrimaryKeySelective(${entityName});
+        }catch (Exception e){
+            throw new BizException(ErrorCode.SYSTEM_FAILED);
+        }
+    }
 }

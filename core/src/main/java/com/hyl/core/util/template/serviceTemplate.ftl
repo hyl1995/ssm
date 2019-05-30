@@ -31,4 +31,20 @@ public interface ${entity + "Service"} {
      * @throws BizException
     */
     ${entity + "Model"} selectBySingle(${entity + "Query"} query) throws BizException;
+
+    /**
+     * 新增对象
+     * @param model
+     * @return
+     * @throws BizException
+    */
+    int save${entity}(${entity+"Model"} model) throws BizException;
+
+    /**
+     * 修改对象
+     * @param model
+     * @return
+     * @throws BizException
+    */
+    int update${entity}(${entity+"Model"} model) throws BizException;
 }
