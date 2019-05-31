@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface AdminMapper {
+
     public int adminAdd(Admin admin);
 
     public int adminUpdate(Admin admin);

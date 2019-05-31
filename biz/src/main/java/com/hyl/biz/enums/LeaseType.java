@@ -1,15 +1,18 @@
-package com.hyl.biz.Enum;
+package com.hyl.biz.enums;
 
-public enum SexType {
+/**
+ * 出租方式
+ */
+public enum LeaseType {
 
-    MALE("male", "男性"),
-    FEMALE("female", "女性")
+    WHOLERENT("wholeRent", "整租"),
+    JOINTRENT("jointRent", "合租")
     ;
 
     private String code;
     private String desc;
 
-    private SexType(String code, String desc) {
+    private LeaseType(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }
@@ -20,8 +23,8 @@ public enum SexType {
      * @param code                     枚举code
      * @return GenderEnum        对应的枚举值
      */
-    public static SexType byCode(final String code) {
-        for (SexType element : values()) {
+    public static LeaseType byCode(final String code) {
+        for (LeaseType element : values()) {
             if (element.getCode().equals(code)) {
                 return element;
             }
@@ -36,5 +39,4 @@ public enum SexType {
     public String getDesc() {
         return desc;
     }
-
 }

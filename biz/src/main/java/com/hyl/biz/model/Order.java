@@ -1,10 +1,10 @@
 package com.hyl.biz.model;
 
-import com.hyl.biz.Enum.OrderStatus;
+import com.lx.pojo.enums.OrderStatus;
 
 import java.sql.Date;
 
-public class Order extends BaseModel{
+public class Order extends BaseModel {
     private String id;
     private String userId;
     private String houseId;

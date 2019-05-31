@@ -1,10 +1,10 @@
 package com.hyl.biz.model;
 
-import com.hyl.biz.Enum.SexType;
+import com.lx.pojo.enums.SexType;
 
 import java.sql.Date;
 
-public class User extends BaseModel{
+public class User extends BaseModel {
     private String id;
     private String nickName;
     private String pass;

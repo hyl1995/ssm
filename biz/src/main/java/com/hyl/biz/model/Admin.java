@@ -1,6 +1,6 @@
 package com.hyl.biz.model;
 
-public class Admin extends BaseModel{
+public class Admin extends BaseModel {
     private String id;
     private String nickName;
     private String pass;

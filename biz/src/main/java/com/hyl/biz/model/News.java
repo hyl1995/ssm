@@ -2,59 +2,59 @@ package com.hyl.biz.model;
 
 import java.sql.Date;
 
-public class News extends BaseModel{
+public class News extends BaseModel {
     private String id;
     private String titie;
     private String content;
     private Date time;
     private String author;
-    private String img_url;
+    private String imgUrl;
 
-    public String getid() {
+    public String getId() {
         return id;
     }
 
-    public void setid(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String gettitie() {
+    public String getTitie() {
         return titie;
     }
 
-    public void settitie(String titie) {
+    public void setTitie(String titie) {
         this.titie = titie;
     }
 
-    public String getcontent() {
+    public String getContent() {
         return content;
     }
 
-    public void setcontent(String content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
-    public Date gettime() {
+    public Date getTime() {
         return time;
     }
 
-    public void settime(Date time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
-    public String getauthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setauthor(String author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
-    public String getimg_url() {
-        return img_url;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setimg_url(String img_url) {
-        this.img_url = img_url;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

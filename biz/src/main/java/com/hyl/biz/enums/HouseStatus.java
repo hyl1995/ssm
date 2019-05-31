@@ -1,18 +1,16 @@
-package com.hyl.biz.Enum;
+package com.hyl.biz.enums;
 
-/**
- * 出租方式
- */
-public enum LeaseType {
+public enum HouseStatus {
 
-    WHOLERENT("wholeRent", "整租"),
-    JOINTRENT("jointRent", "合租")
+    WAITINGRENT("waitingRent", "待出租"),
+    RENTED("rented", "已出租"),
+    NORENT("noRent", "禁止出租")
     ;
 
     private String code;
     private String desc;
 
-    private LeaseType(String code, String desc) {
+    private HouseStatus(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }
@@ -23,8 +21,8 @@ public enum LeaseType {
      * @param code                     枚举code
      * @return GenderEnum        对应的枚举值
      */
-    public static LeaseType byCode(final String code) {
-        for (LeaseType element : values()) {
+    public static HouseStatus byCode(final String code) {
+        for (HouseStatus element : values()) {
             if (element.getCode().equals(code)) {
                 return element;
             }

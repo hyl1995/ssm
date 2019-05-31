@@ -1,9 +1,9 @@
 package com.hyl.biz.model;
 
-import com.hyl.biz.Enum.HouseStatus;
-import com.hyl.biz.Enum.LeaseType;
+import com.lx.pojo.enums.HouseStatus;
+import com.lx.pojo.enums.LeaseType;
 
-public class House extends BaseModel{
+public class House {
     private String id;
     /**
      * 区域
