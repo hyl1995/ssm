@@ -14,16 +14,22 @@ public class CreateEnumUtils {
     public static void main(String[] args) throws Exception {
         Map<String, Object> map =new HashMap<>();
         List<EnumObject> list = new ArrayList<>();
-        list.add(new EnumObject("AccountTypeEnum", "账户类型"));
-        list.add(new EnumObject("ActiveStateEnum", "活动状态"));
-        list.add(new EnumObject("CardTypeEnum", "银行卡类型"));
+        list.add(new EnumObject("AccountType", "账户类型"));
+        list.add(new EnumObject("CardType", "银行卡类型"));
+        list.add(new EnumObject("FeeType", "手续费类型"));
         list.add(new EnumObject("CurrencyEnum", "交易币种"));
-        list.add(new EnumObject("FeeTypeEnum", "交易手续费费率收取类别"));
-        list.add(new EnumObject("TransactionObjectTypeEnum", "交易的主体类型"));
-        list.add(new EnumObject("TransactionTypeEnum", "交易类型"));
-        list.add(new EnumObject("MerchantGradeEnum", "商户等级或代理等级"));
-        list.add(new EnumObject("RegisterStateEnum", "审核状态"));
-        list.add(new EnumObject("PaymentStatusEnum", "订单的交易状态"));
+        list.add(new EnumObject("HousingCertType", "公积金认证方式"));
+        list.add(new EnumObject("InterestType", "利息类型"));
+        list.add(new EnumObject("IsCret", "是否认证"));
+        list.add(new EnumObject("MemberStatus", "用户状态"));
+        list.add(new EnumObject("MerchantStatus", "商户状态"));
+        list.add(new EnumObject("OrderStatus", "订单状态"));
+        list.add(new EnumObject("PlatformType", "电商平台类型"));
+        list.add(new EnumObject("ProductTitleTag", "产品标签"));
+        list.add(new EnumObject("RepayMethod", "还款方式"));
+        list.add(new EnumObject("SocialInsuranceType", "社保类型"));
+        list.add(new EnumObject("SystemBackstageType", "系统权限类型"));
+        list.add(new EnumObject("SystemType", "系统类型"));
         map.put("enumList",list);
 
         /* 生成enum的Service */

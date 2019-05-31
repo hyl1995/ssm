@@ -1,6 +1,14 @@
 
 public class ${entity + "Query"} extends BaseQuery {
-    @SQLGenerateField
-    private String id;
+    @SQLGenerateField(column = {"memberNo", "nickName", "phoneNo"})
+    private String filter;
+
+    public String getFilter() {
+        return filter;
+    }
+
+    public void setFilter(String filter) {
+        this.filter = filter;
+    }
 
 }
