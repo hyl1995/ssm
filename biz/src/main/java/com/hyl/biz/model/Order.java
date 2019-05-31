@@ -1,6 +1,6 @@
 package com.hyl.biz.model;
 
-import com.lx.pojo.enums.OrderStatus;
+import com.hyl.biz.enums.OrderStatus;
 
 import java.sql.Date;
 

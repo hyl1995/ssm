@@ -5,7 +5,7 @@ public class Admin extends BaseModel {
     private String nickName;
     private String pass;
     private String name;
-    private String number;
+    private String phone;
 
     public String getId() {
         return id;
@@ -39,11 +39,11 @@ public class Admin extends BaseModel {
         this.name = name;
     }
 
-    public String getNumber() {
-        return number;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

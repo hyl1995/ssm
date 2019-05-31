@@ -1,18 +1,25 @@
 package com.hyl.biz.dao;
 
 import com.hyl.biz.model.Admin;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface AdminMapper {
 
-    public int adminAdd(Admin admin);
+    @Insert(" insert into Admin_ ( name ) values (#{name}) ")
+    public int add(Admin admin);
 
-    public int adminUpdate(Admin admin);
+    @Delete(" delete from Admin_ where id= #{id} ")
+    public void delete(int id);
 
-    public void adminDelete(Admin admin);
+    @Select("select * from Admin_ where id= #{id} ")
+    public Admin get(int id);
 
-    public List<Admin> adminListOne(Admin admin);
+    @Update("update Admin_ set name=#{name} where id=#{id} ")
+    public int update(Admin admin);
+
+    @Select(" select * from Admin_ ")
+    public List<Admin> list();
 }
