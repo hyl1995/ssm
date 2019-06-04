@@ -29,7 +29,6 @@ public class TestCustomer4News {
         //获取一个临时队列
         String queueName = channel.queueDeclare().getQueue();
         //接受 USA 信息
-
         channel.queueBind(queueName, EXCHANGE_NAME, "*.news");
         System.out.println(name +" 等待接受消息");
         //DefaultConsumer类实现了Consumer接口，通过传入一个频道，
