@@ -39,6 +39,20 @@ function parseToJSONArrayString(data, columnNum, key, otherField, isStringify) {
     return JSON.stringify(jsonArray);
 }
 
+//装填非表单字段
+function setDetailColumn(data, formId) {
+    $(formId).each(function(){
+        let key = $(this).data("form");
+        let value ="";
+        if (key.endsWith("Enum")) {
+            value = data[key].desc;
+        } else {
+            value = data[key];
+        }
+        $(this).text(value);
+    });
+}
+
 var cookie = {
     set:function(key,val,time){//设置cookie
         var date=new Date(); //获取当前时间

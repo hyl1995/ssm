@@ -1,5 +1,6 @@
 package com.hyl.biz.dao;
 
+import com.github.pagehelper.Page;
 import com.hyl.biz.model.Admin;
 import org.apache.ibatis.annotations.*;
 
