@@ -39,6 +39,13 @@ function parseToJSONArrayString(data, columnNum, key, otherField, isStringify) {
     return JSON.stringify(jsonArray);
 }
 
+//地址栏上的参数
+function getOriginalUrlParams() {
+    var localStorageName = window.location.href;
+    var localStorageArray = localStorageName.split('?');
+    return "?" + localStorageArray[1];
+}
+
 //装填非表单字段
 function setDetailColumn(data, formId) {
     $(formId).each(function(){
