@@ -17,13 +17,23 @@ public class ExportExcelUtil {
     private static final String XLS = ".xls";
 
     /**
-     * 导出
+     * 导出excel
      * @param title
      * @param mapList
      * @param suffix
      * @return
      */
-    public static Workbook exportExcel(List<String> title, List<Map<String, Object>> mapList, String suffix) {
+    public static Workbook exportExcel(String sheetName, List<String> title, List<Map<String, Object>> mapList, String suffix) {
+        Workbook workbook = createWorkbook(suffix);
+        return setValue(workbook, sheetName, title, mapList);
+    }
+
+    /**
+     * 创建Workbook
+     * @param suffix
+     * @return
+     */
+    public static Workbook createWorkbook(String suffix) {
         Workbook workbook = null;
         if (StringUtils.equals(suffix, XLSX)) {
             workbook = new XSSFWorkbook();
@@ -33,7 +43,31 @@ public class ExportExcelUtil {
             workbook = new XSSFWorkbook();
         }
 
-        Sheet sheet = workbook.createSheet();
+        return workbook;
+    }
+
+    /**
+     * 创建Sheet
+     * @param workbook
+     * @param sheetName
+     * @return
+     */
+    public static Sheet createSheet(Workbook workbook, String sheetName) {
+        if (StringUtils.isBlank(sheetName)) {
+            return workbook.createSheet();
+        } else {
+            return workbook.createSheet(sheetName);
+        }
+    }
+
+    /**
+     * 导出
+     * @param title
+     * @param mapList
+     * @return
+     */
+    public static Workbook setValue(Workbook workbook, String sheetName,  List<String> title, List<Map<String, Object>> mapList) {
+        Sheet sheet = createSheet(workbook, sheetName);
         Row titleRow = sheet.createRow(0);//标题
         for (int i = 0; i < title.size(); i++) {
             Cell cell = titleRow.createCell(i);
@@ -57,12 +91,11 @@ public class ExportExcelUtil {
      * 导出到模板
      * @param workbook
      * @param mapList
-     * @param suffix
      * @param sheetNo
      * @param startRow
      * @return
      */
-    public static Workbook exportExcelByTemplate(Workbook workbook, List<Map<String, Object>> mapList, String suffix, int sheetNo, int startRow) {
+    public static Workbook setValueByTemplate(Workbook workbook, List<Map<String, Object>> mapList, int sheetNo, int startRow) {
         Sheet sheet = workbook.getSheetAt(sheetNo);
         for (int i = 0; i < mapList.size(); i++) {
             Row row = sheet.createRow(i + startRow);
