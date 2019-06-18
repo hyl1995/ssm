@@ -58,7 +58,7 @@
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <poi.version>4.1.0</poi.version>
         <!--工具大全-->
-        <hutool.version>4.5.3</hutool.version>
+        <hutool.version>4.5.12</hutool.version>
     </properties>
 
     <dependencyManagement>
