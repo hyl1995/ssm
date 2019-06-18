@@ -1,6 +1,6 @@
 package com.hyl.biz.dao;
 
-import com.github.pagehelper.Page;
+import cn.hutool.db.PageResult;
 import com.hyl.biz.model.Admin;
 import org.apache.ibatis.annotations.*;
 
@@ -22,7 +22,7 @@ public interface AdminMapper {
     public void delete(@Param("id")int id);
 
     @Select(" select * from admin <where><if test=\"filter!=null && filter!=''\">${filter}</if></where> ")
-    public Page<Admin> selectByPage(@Param("filter")String filter);
+    public PageResult<Admin> selectByPage(@Param("filter")String filter);
 
     @Select(" select * from admin <where><if test=\"filter!=null && filter!=''\">${filter}</if></where> ")
     public List<Admin> selectByList(@Param("filter")String filter);
