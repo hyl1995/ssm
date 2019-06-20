@@ -1,6 +1,6 @@
 package com.hyl.core.util;
 
-import cn.hutool.core.util.NetUtil;
+import cn.hutool.core.net.NetUtil;
 
 import javax.swing.*;
 
