@@ -15,7 +15,7 @@ public class LambdaUtil {
     }
 
     public static <T> String joinByDelimiter(List<T>list, Function key, String delimiter) {
-        return String.valueOf(list.stream().map(key).collect(Collectors.joining(delimiter)));
+        return list.stream().map(key).collect(Collectors.joining(delimiter)).toString();
     }
 
 }
