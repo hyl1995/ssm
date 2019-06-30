@@ -1,10 +1,3 @@
-/**
- * Project Name:bpsp
- * File Name:AuthNFilter
- * Package Name:com.bostech.bpsp.filter
- * Date:2017/5/12 11:14
- * Copyright (c) 2017, yxq@bostech.com.cn All Rights Reserved.
- */
 package com.hyl.core.filter;
 
 import javax.servlet.Filter;
