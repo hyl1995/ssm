@@ -13,15 +13,18 @@ public class FileRead {
 
     public static void main(String[] args) {
         File[] ls = getFiles("E:\\Git\\ssm");
-//        for (File l : ls) {
-//            System.out.println(l.getName()+ ": "+ l.getAbsolutePath());
+
+        Long startTime = System.currentTimeMillis();
+
+        loopFiles(ls);//方法一 75ms
+
+//        List<File> ls2 = FileUtil.loopFiles("E:\\Git\\ssm", pathname -> pathname.getName().endsWith(".java"));//方法二 90ms
+//        for (File file : ls2) {
+//            readJava(file);
 //        }
 
-        loopFiles(ls);
-
-//        for (String s : packgeSet) {
-//            System.out.println(s);
-//        }
+        Long endTime = System.currentTimeMillis();
+        System.out.println(endTime - startTime);
     }
 
     private static void loopFiles(File[] ls) {
