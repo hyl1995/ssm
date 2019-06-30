@@ -19,19 +19,23 @@ public class FileRead {
 
         loopFiles(ls);
 
-        for (String s : packgeSet) {
-            System.out.println(s);
-        }
+//        for (String s : packgeSet) {
+//            System.out.println(s);
+//        }
     }
 
     private static void loopFiles(File[] ls) {
+        boolean hasPackgeName = false;
         for (File l : ls) {
-            if (l.isFile()) {
-                readJava(l);
-            }
             if (l.isDirectory()) {//目录
                 File[] files = getFiles(l.getPath());
                 loopFiles(files);
+            }
+            if (!hasPackgeName) {//只要获取一次包名就行
+                if (l.isFile()) {
+                    readJava(l);
+                    hasPackgeName = true;
+                }
             }
         }
     }
@@ -47,6 +51,7 @@ public class FileRead {
             BufferedReader reader = FileUtil.getReader(file, "utf-8");
             try {
                 String packgeName = reader.readLine();
+                System.out.println(packgeName);
                 packgeSet.add(packgeName);
                 return packgeName;
             } catch (IOException e) {
