@@ -18,6 +18,7 @@ public class AdminController {
     @RequestMapping(value = "login",method = RequestMethod.GET)
     public Result login(AdminQuery query){
         Result result = new Result();
+        query.setFilter("phone='1234567891'");
 //        List<Admin> admins = adminService.sele(query);
         Admin admin = adminService.selectBySingle(query);
         result.setData(admin);

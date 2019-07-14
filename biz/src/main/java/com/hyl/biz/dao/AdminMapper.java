@@ -9,25 +9,25 @@ import java.util.List;
 @Mapper
 public interface AdminMapper {
 
-    @Insert(" insert into admin ( id,nick_name,pass,name,phone ) values (#{id},#{nickName},#{pass},#{name},#{phone}) ")
-    public int add(@Param("Admin")Admin admin);
+    @Insert(" insert into `admin` ( id,nick_name,pass,name,phone ) values (#{id},#{nickName},#{pass},#{name},#{phone}) ")
+    int add(@Param("Admin")Admin admin);
 
-    @Update("update admin set nick_name=#{nickName},pass=#{pass},name=#{name},phone=#{phone} where id=#{id} ")
-    public int update(@Param("Admin")Admin admin);
+    @Update("update `admin` set nick_name=#{nickName},pass=#{pass},name=#{name},phone=#{phone} where id=#{id} ")
+    int update(@Param("Admin")Admin admin);
 
-    @Select("select * from admin where id= #{id} ")
-    public Admin get(@Param("id")int id);
+    @Select("select * from `admin` where id= #{id} ")
+    Admin get(@Param("id")int id);
 
-    @Delete(" delete from admin where id= #{id} ")
-    public void delete(@Param("id")String id);
+    @Delete(" delete from `admin` where id= #{id} ")
+    void delete(@Param("id")String id);
 
-    @Select(" select * from admin <where><if test=\"filter!=null && filter!=''\">${filter}</if></where> ")
-    public PageResult<Admin> selectByPage(@Param("filter")String filter);
+    @Select("<script> select * from `admin` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")
+    PageResult<Admin> selectByPage(@Param("filter")String filter);
 
-    @Select(" select * from admin <where><if test=\"filter!=null && filter!=''\">${filter}</if></where> ")
-    public List<Admin> selectByList(@Param("filter")String filter);
+    @Select("<script> select * from `admin` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")
+    List<Admin> selectByList(@Param("filter")String filter);
 
-    @Select(" select * from admin <where><if test=\"filter!=null && filter!=''\">${filter}</if></where> ")
-    public Admin selectBySingle(@Param("filter")String filter);
+    @Select("<script> select * from `admin` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")
+    Admin selectBySingle(@Param("filter")String filter);
 }
 
