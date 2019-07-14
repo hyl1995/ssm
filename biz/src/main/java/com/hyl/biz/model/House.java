@@ -1,7 +1,6 @@
 package com.hyl.biz.model;
-
-import com.lx.pojo.enums.HouseStatus;
-import com.lx.pojo.enums.LeaseType;
+import com.hyl.biz.enums.HouseStatus;
+import com.hyl.biz.enums.LeaseType;
 
 public class House {
     private String id;

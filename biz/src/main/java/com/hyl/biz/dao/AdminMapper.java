@@ -19,7 +19,7 @@ public interface AdminMapper {
     public Admin get(@Param("id")int id);
 
     @Delete(" delete from admin where id= #{id} ")
-    public void delete(@Param("id")int id);
+    public void delete(@Param("id")String id);
 
     @Select(" select * from admin <where><if test=\"filter!=null && filter!=''\">${filter}</if></where> ")
     public PageResult<Admin> selectByPage(@Param("filter")String filter);

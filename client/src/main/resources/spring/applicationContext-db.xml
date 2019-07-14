@@ -60,6 +60,8 @@
                         <!--使用下面的方式配置参数，一行配置一个 -->
                         <value>
                             helperDialect = mysql
+                            reasonable=true <!-- 分页合理化参数 -->
+                            params=count=countSql <!-- 参数映射 -->
                         </value>
                     </property>
                 </bean>
@@ -81,16 +83,16 @@
     </bean>
     <!-- 使用声明式事务 transaction-manager：引用上面定义的事务管理器 -->
     <tx:annotation-driven transaction-manager="transactionManager" />
-    <!--&lt;!&ndash; 配置事务属性 &ndash;&gt;-->
-    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
-        <!--<tx:attributes>-->
-            <!--<tx:method name="*" read-only="false" />-->
-        <!--</tx:attributes>-->
-    <!--</tx:advice>-->
-    <!--&lt;!&ndash; 配置切面 &ndash;&gt;-->
-    <!--<aop:config>-->
-        <!--<aop:pointcut expression="execution(* com.hyl.biz.dao.*.*(..))"-->
-                      <!--id="aopPointcut" />-->
-        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="aopPointcut" />-->
-    <!--</aop:config>-->
+    <!-- 配置事务属性 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" read-only="false" />
+        </tx:attributes>
+    </tx:advice>
+    <!-- 配置切面 -->
+    <aop:config>
+        <aop:pointcut expression="execution(* com.hyl.biz.dao.*.*(..))"
+                      id="aopPointcut" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="aopPointcut" />
+    </aop:config>
 </beans>

@@ -29,9 +29,9 @@
     </bean>
 
     <!--platform里面的配置文件-->
-    <!--<import resource="classpath:/spring/applicationContext-db.xml"/>-->
+    <import resource="classpath:/spring/applicationContext-db.xml"/>
     <!--<import resource="classpath:/spring/applicationContext-jms.xml"/>-->
-    <import resource="classpath:/spring/applicationContext-rabbitmq.xml"/>
+<!--    <import resource="classpath:/spring/applicationContext-rabbitmq.xml"/>-->
 
     <!--<util:properties id="jdbcConf" location="classpath:jdbc.properties" />-->
 </beans>

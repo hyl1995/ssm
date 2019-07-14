@@ -1,15 +1,18 @@
 package com.hyl.biz.service;
 
 import com.hyl.biz.model.Admin;
+import com.hyl.biz.model.query.AdminQuery;
 
 import java.util.List;
 
 public interface AdminService {
-    public int add(Admin admin);
+    int add(Admin admin);
 
-    public int update(Admin admin);
+    int update(Admin admin);
 
-    public void delete(Admin admin);
+    void delete(String id);
 
-    public List<Admin> listone(Admin admin);
+    List<Admin> selectByList(AdminQuery query);
+
+    Admin selectBySingle(AdminQuery query);
 }

@@ -1,7 +1,5 @@
 package com.hyl.core;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.format.number.NumberFormatAnnotationFormatterFactory;
 import org.springframework.format.support.DefaultFormattingConversionService;
@@ -9,10 +7,10 @@ import org.springframework.format.support.FormattingConversionService;
 
 import java.time.format.DateTimeFormatter;
 
-@Configuration
+//@Configuration
 class DateTimeConfig {
 
-    @Bean
+//    @Bean
     public FormattingConversionService conversionService() {
         DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService(false);
 

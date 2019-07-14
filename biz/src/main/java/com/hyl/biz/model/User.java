@@ -1,6 +1,6 @@
 package com.hyl.biz.model;
 
-import com.lx.pojo.enums.SexType;
+import com.hyl.biz.enums.SexType;
 
 import java.sql.Date;
 
