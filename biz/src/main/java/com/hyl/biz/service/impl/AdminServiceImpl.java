@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class AdminServiceImpl implements AdminService {
     @Autowired
-    AdminMapper adminMapper;
+    private AdminMapper adminMapper;
 
     public int add(Admin admin) {
         return adminMapper.add(admin);

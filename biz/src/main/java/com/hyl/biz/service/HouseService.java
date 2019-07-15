@@ -1,17 +1,18 @@
 package com.hyl.biz.service;
 
 import com.hyl.biz.model.House;
+import com.hyl.biz.model.query.HouseQuery;
 
 import java.util.List;
 
 public interface HouseService {
-    public List<House> List(House house);
+    int add(House house);
 
-    public int Add(House house);
+    int update(House house);
 
-    public int Update(House house);
+    void delete(String id);
 
-    public void Delete(House house);
+    List<House> selectByList(HouseQuery query);
 
-    public int houseZtUpdate(House house);
+    House selectBySingle(HouseQuery query);
 }

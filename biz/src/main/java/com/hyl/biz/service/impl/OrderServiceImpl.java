@@ -1,7 +1,9 @@
 package com.hyl.biz.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.hyl.biz.dao.OrderMapper;
 import com.hyl.biz.model.Order;
+import com.hyl.biz.model.query.OrderQuery;
 import com.hyl.biz.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,27 +12,31 @@ import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-
     @Autowired
-    OrderMapper orderMapper;
+    private OrderMapper orderMapper;
 
-    public int orderUpzt(Order order) {
-        return orderMapper.orderUpzt(order);
+    public int add(Order order) {
+        return orderMapper.add(order);
     }
 
-    public List<Order> orderListone(Order order) {
-        return orderMapper.orderListone(order);
+    public int update(Order order) {
+        return orderMapper.update(order);
     }
 
-    public int orderAdd(Order order) {
-        return orderMapper.orderAdd(order);
+    @Override
+    public void delete(String id) {
+        orderMapper.delete(id);
     }
 
-    public int orderUpdate(Order order) {
-        return orderMapper.orderUpdate(order);
+    @Override
+    public List<Order> selectByList(OrderQuery query) {
+        //分页查询
+        PageHelper.startPage(query.getPageNum(), query.getPageSize());
+        return orderMapper.selectByList(query.getFilter());
     }
 
-    public void orderDelete(Order order) {
-        orderMapper.orderDelete(order);
+    @Override
+    public Order selectBySingle(OrderQuery query) {
+        return orderMapper.selectBySingle(query.getFilter());
     }
 }

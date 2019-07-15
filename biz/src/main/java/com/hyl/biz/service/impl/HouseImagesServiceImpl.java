@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class HouseImagesServiceImpl implements HouseImagesService {
     @Autowired
-    HouseImagesMapper houseImagesMapper;
+    private HouseImagesMapper houseImagesMapper;
 }

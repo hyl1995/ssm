@@ -1,15 +1,18 @@
 package com.hyl.biz.service;
 
 import com.hyl.biz.model.User;
+import com.hyl.biz.model.query.UserQuery;
 
 import java.util.List;
 
 public interface UserService {
-    public List<User> userListOne(User user);
+    int add(User user);
 
-    public int userAdd(User user);
+    int update(User user);
 
-    public int userUpdate(User user);
+    void delete(String id);
 
-    public void userDelete(User user);
+    List<User> selectByList(UserQuery query);
+
+    User selectBySingle(UserQuery query);
 }

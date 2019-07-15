@@ -15,7 +15,7 @@ import static freemarker.template.Configuration.VERSION_2_3_28;
 public class CreateCodeUtils {
     public static void main(String[] args) throws Exception {
 
-        String tableName = "merchant_account_seq";
+        String tableName = "user";
         String entityName = StrUtil.toCamelCase(tableName);//驼峰命名
         String UpperObjectName = entityName.substring(0, 1).toUpperCase() + entityName.substring(1);// 首字母大写
 
@@ -25,13 +25,23 @@ public class CreateCodeUtils {
         root.put("entityName", entityName);
 
         /* 生成query */
-        printFile("queryTemplate.ftl", root, UpperObjectName + "Query.java", UpperObjectName + "\\query\\");
-        /* 生成sql脚本 */
-        printFile("sqlTemplate.ftl", root, tableName + ".xml", UpperObjectName + "\\mapper\\");
+//        printFile("queryTemplate.ftl", root, UpperObjectName + "Query.java", UpperObjectName + "\\query\\");
+//        /* 生成sql脚本 */
+//        printFile("sqlTemplate.ftl", root, tableName + ".xml", UpperObjectName + "\\mapper\\");
+//        /* 生成service */
+//        printFile("serviceTemplate.ftl", root, UpperObjectName + "Service.java", UpperObjectName + "\\" + entityName + "\\");
+//        /* 生成serviceImpl */
+//        printFile("serviceImplTemplate.ftl", root, UpperObjectName + "ServiceImpl.java", UpperObjectName + "\\service\\");
+
+        /* 本项目 */
+        /* 生成query */
+        printFile("queryTemplate.ftl", root, UpperObjectName + "Query.java", "\\query\\");
         /* 生成service */
-        printFile("serviceTemplate.ftl", root, UpperObjectName + "Service.java", UpperObjectName + "\\" + entityName + "\\");
+        printFile("serviceTemplate.ftl", root, UpperObjectName + "Service.java", "\\service\\");
         /* 生成serviceImpl */
-        printFile("serviceImplTemplate.ftl", root, UpperObjectName + "ServiceImpl.java", UpperObjectName + "\\service\\");
+        printFile("serviceImplTemplate.ftl", root, UpperObjectName + "ServiceImpl.java", "\\service\\impl\\");
+        /* 生成mapper */
+        printFile("mapperTemplate.ftl", root, UpperObjectName + "Mapper.java", "\\dao\\");
 
         System.out.println("生成完毕！");
     }

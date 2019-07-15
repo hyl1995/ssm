@@ -1,15 +1,18 @@
 package com.hyl.biz.service;
 
 import com.hyl.biz.model.News;
+import com.hyl.biz.model.query.NewsQuery;
 
 import java.util.List;
 
 public interface NewsService {
-    public int add(News news);
+    int add(News news);
 
-    public int update(News news);
+    int update(News news);
 
-    public void delete(News news);
+    void delete(String id);
 
-    public List<News> listone(News news);
+    List<News> selectByList(NewsQuery query);
+
+    News selectBySingle(NewsQuery query);
 }

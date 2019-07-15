@@ -1,6 +1,6 @@
-import com.hyl.core.model.BaseQuery;
 
 public class ${entity + "Query"} extends BaseQuery {
+    @SQLGenerateField(column = {"memberNo", "nickName", "phoneNo"})
     private String filter;
 
     public String getFilter() {
@@ -10,4 +10,5 @@ public class ${entity + "Query"} extends BaseQuery {
     public void setFilter(String filter) {
         this.filter = filter;
     }
+
 }

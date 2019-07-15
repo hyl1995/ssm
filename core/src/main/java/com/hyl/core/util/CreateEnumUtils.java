@@ -1,6 +1,6 @@
 package com.hyl.core.util;
 
-import com.hyl.core.util.template.EnumObject;
+import com.hyl.core.util.template.company.EnumObject;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;

@@ -1,51 +1,13 @@
+import java.util.List;
+
 public interface ${entity + "Service"} {
+    int add(${entity} ${entityName});
 
-    /**
-     * 统计记录行数
-     * @param sql
-     * @return
-     * @throws BizException
-     */
-    int count(String sql) throws BizException;
+    int update(${entity} ${entityName});
 
-    /**
-     * 分页查询
-     * @param query
-     * @return
-     * @throws BizException
-     */
-    Page<${entity + "Model"}> selectByPage(${entity + "Query"} query) throws BizException;
+    void delete(String id);
 
-    /**
-     * list查询
-     * @param query
-     * @return
-     * @throws BizException
-    */
-    List<${entity + "Model"}> selectByList(${entity + "Query"} query) throws BizException;
+    List<${entity}> selectByList(${entity + "Query"} query);
 
-    /**
-     * 对象查询
-     * @param query
-     * @return
-     * @throws BizException
-    */
-    ${entity + "Model"} selectBySingle(${entity + "Query"} query) throws BizException;
-
-    /**
-     * 新增对象
-     * @param model
-     * @return
-     * @throws BizException
-    */
-    int save${entity}(${entity+"Model"} model) throws BizException;
-
-    /**
-     * 修改对象
-     * @param model
-     * @return
-     * @throws BizException
-    */
-    int update${entity}(${entity+"Model"} model) throws BizException;
-
+    ${entity} selectBySingle(${entity + "Query"} query);
 }

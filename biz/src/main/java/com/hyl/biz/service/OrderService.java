@@ -1,17 +1,18 @@
 package com.hyl.biz.service;
 
 import com.hyl.biz.model.Order;
+import com.hyl.biz.model.query.OrderQuery;
 
 import java.util.List;
 
 public interface OrderService {
-    public int orderUpzt(Order order);
+    int add(Order order);
 
-    public List<Order> orderListone(Order order);
+    int update(Order order);
 
-    public int orderAdd(Order order);
+    void delete(String id);
 
-    public int orderUpdate(Order order);
+    List<Order> selectByList(OrderQuery query);
 
-    public void orderDelete(Order order);
+    Order selectBySingle(OrderQuery query);
 }

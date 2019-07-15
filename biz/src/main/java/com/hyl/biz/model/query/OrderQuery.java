@@ -1,6 +1,8 @@
+package com.hyl.biz.model.query;
+
 import com.hyl.core.model.BaseQuery;
 
-public class ${entity + "Query"} extends BaseQuery {
+public class OrderQuery extends BaseQuery {
     private String filter;
 
     public String getFilter() {

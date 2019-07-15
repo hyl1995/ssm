@@ -15,9 +15,6 @@ public interface AdminMapper {
     @Update("update `admin` set nick_name=#{nickName},pass=#{pass},name=#{name},phone=#{phone} where id=#{id} ")
     int update(@Param("Admin")Admin admin);
 
-    @Select("select * from `admin` where id= #{id} ")
-    Admin get(@Param("id")int id);
-
     @Delete(" delete from `admin` where id= #{id} ")
     void delete(@Param("id")String id);
 

@@ -1,4 +1,4 @@
-package com.hyl.core.util.template;
+package com.hyl.core.util.template.company;
 
 public class EnumObject {
     private String name;

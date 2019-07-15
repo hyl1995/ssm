@@ -1,7 +1,9 @@
 package com.hyl.biz.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.hyl.biz.dao.HouseMapper;
 import com.hyl.biz.model.House;
+import com.hyl.biz.model.query.HouseQuery;
 import com.hyl.biz.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,26 +13,30 @@ import java.util.List;
 @Service
 public class HouseServiceImpl implements HouseService {
     @Autowired
-    HouseMapper houseMapper;
+    private HouseMapper houseMapper;
 
-    public int houseZtUpdate(House house) {
-        return houseMapper.houseZtUpdate(house);
+    public int add(House house) {
+        return houseMapper.add(house);
     }
 
-    public List<House> List(House house) {
-        return houseMapper.houseList(house);
+    public int update(House house) {
+        return houseMapper.update(house);
     }
 
-    public int Add(House house) {
-        return houseMapper.houseAdd(house);
+    @Override
+    public void delete(String id) {
+        houseMapper.delete(id);
     }
 
-    public int Update(House house) {
-        return houseMapper.houseUpdate(house);
+    @Override
+    public List<House> selectByList(HouseQuery query) {
+        //分页查询
+        PageHelper.startPage(query.getPageNum(), query.getPageSize());
+        return houseMapper.selectByList(query.getFilter());
     }
 
-    public void Delete(House house) {
-        houseMapper.houseDelete(house);
+    @Override
+    public House selectBySingle(HouseQuery query) {
+        return houseMapper.selectBySingle(query.getFilter());
     }
-
 }
