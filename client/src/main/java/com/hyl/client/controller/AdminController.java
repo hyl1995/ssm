@@ -17,23 +17,28 @@ public class AdminController {
 
     @RequestMapping(value = "login",method = RequestMethod.GET)
     public Result login(AdminQuery query){
-        Result result = new Result();
+        Result result = new Result(true);
         query.setFilter("phone='1234567891'");
-//        List<Admin> admins = adminService.sele(query);
         Admin admin = adminService.selectBySingle(query);
         result.setData(admin);
         return result;
     }
 
     @RequestMapping(value = "update",method = RequestMethod.GET)
-    public Object update(Admin admin){
-        int s=adminService.update(admin);
-        return s;
+    public Result update(Admin admin){
+        Result result = new Result(false);
+        if (adminService.update(admin) == 1) {
+            result.setSuccess(true);
+        }
+        return result;
     }
 
-    @RequestMapping(value = "registered",method = RequestMethod.POST)
-    public Object add(Admin admin){
-        int s =adminService.add(admin);
-        return s;
+    @RequestMapping(value = "register",method = RequestMethod.POST)
+    public Result add(Admin admin){
+        Result result = new Result(false);
+        if (adminService.add(admin) == 1) {
+            result.setSuccess(true);
+        }
+        return result;
     }
 }
