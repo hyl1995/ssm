@@ -1,6 +1,6 @@
 package com.hyl.biz.model;
 
-public class HouseImages {
+public class HouseImg {
     private String imgId;
     private String imgUrl;
     private String id;
