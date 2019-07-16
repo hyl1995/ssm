@@ -83,6 +83,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
         </dependency>
+        <!--MongoDB-->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver</artifactId>
+        </dependency>
 
         <!--消息队列-->
         <!--<dependency>-->
