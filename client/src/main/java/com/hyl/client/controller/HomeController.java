@@ -1,6 +1,6 @@
 package com.hyl.client.controller;
 
-import com.hyl.core.BaseController;
+import com.hyl.core.model.BaseController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.hyl.core;
+package com.hyl.core.model;
 
 public class BaseController {
 }

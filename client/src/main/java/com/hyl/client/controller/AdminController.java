@@ -3,6 +3,7 @@ package com.hyl.client.controller;
 import com.hyl.biz.model.Admin;
 import com.hyl.biz.model.query.AdminQuery;
 import com.hyl.biz.service.AdminService;
+import com.hyl.core.model.BaseController;
 import com.hyl.core.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("admin/")
-public class AdminController {
+public class AdminController extends BaseController {
     @Autowired
     AdminService adminService;
 
