@@ -15,7 +15,7 @@ import static freemarker.template.Configuration.VERSION_2_3_28;
 public class CreateCodeUtils {
     public static void main(String[] args) throws Exception {
 
-        String tableName = "user";
+        String tableName = "house_img";
         String entityName = StrUtil.toCamelCase(tableName);//驼峰命名
         String UpperObjectName = entityName.substring(0, 1).toUpperCase() + entityName.substring(1);// 首字母大写
 
