@@ -8,14 +8,13 @@ import java.util.List;
 
 @Mapper
 public interface AdminMapper {
-
-    @Insert(" insert into `admin` ( id,nick_name,pass,name,phone ) values (#{id},#{nickName},#{pass},#{name},#{phone}) ")
+    @Insert("insert into `admin` (nick_name,pass,name,phone) values (#{nickName},#{pass},#{name},#{phone})")
     int add(@Param("Admin")Admin admin);
 
-    @Update("update `admin` set nick_name=#{nickName},pass=#{pass},name=#{name},phone=#{phone} where id=#{id} ")
+    @Update("update `admin` set nick_name=#{nickName},pass=#{pass},name=#{name},phone=#{phone} where id=#{id}")
     int update(@Param("Admin")Admin admin);
 
-    @Delete(" delete from `admin` where id= #{id} ")
+    @Delete("delete from `admin` where id= #{id}")
     void delete(@Param("id")String id);
 
     @Select("<script> select * from `admin` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")

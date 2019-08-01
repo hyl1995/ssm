@@ -2,8 +2,7 @@ package com.hyl.core.service;
 
 import cn.hutool.db.nosql.mongo.MongoDS;
 import cn.hutool.db.nosql.mongo.MongoFactory;
-import com.mongodb.DB;
-import com.mongodb.gridfs.GridFS;
+import com.mongodb.MongoClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,8 +15,8 @@ public class MongoDBService {
     public void init() {
         try {
             MongoDS mongoDS = MongoFactory.getDS("127.0.0.1", 27017);
-            DB db = mongoClient.getDB(dataBase);
-            gridFS = new GridFS(db);
+            MongoClient mongoClient = mongoDS.getMongo();
+
         } catch (Exception e) {
             logger.error("mongoClient:UnknownHostException", e);
         }
