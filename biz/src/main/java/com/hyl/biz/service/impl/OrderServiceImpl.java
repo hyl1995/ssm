@@ -15,17 +15,29 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
 
-    public int add(Order order) {
-        return orderMapper.add(order);
+    public boolean add(Order order) {
+        if (orderMapper.add(order) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public int update(Order order) {
-        return orderMapper.update(order);
+    public boolean update(Order order) {
+        if (orderMapper.update(order) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public void delete(String id) {
-        orderMapper.delete(id);
+    public boolean delete(Long id) {
+        if (orderMapper.delete(id) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

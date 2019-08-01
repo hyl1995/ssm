@@ -6,11 +6,11 @@ import com.hyl.biz.model.query.OrderQuery;
 import java.util.List;
 
 public interface OrderService {
-    int add(Order order);
+    boolean add(Order order);
 
-    int update(Order order);
+    boolean update(Order order);
 
-    void delete(String id);
+    boolean delete(Long id);
 
     List<Order> selectByList(OrderQuery query);
 

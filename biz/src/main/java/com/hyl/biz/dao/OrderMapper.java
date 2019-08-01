@@ -15,7 +15,7 @@ public interface OrderMapper {
     int update(@Param("Order") Order order);
 
     @Delete("delete from `order` where id= #{id}")
-    void delete(@Param("id") String id);
+    int delete(@Param("id") Long id);
 
     @Select("<script> select * from `order` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")
     PageResult<Order> selectByPage(@Param("filter") String filter);

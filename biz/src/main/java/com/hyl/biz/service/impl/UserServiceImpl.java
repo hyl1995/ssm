@@ -15,17 +15,29 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public int add(User user) {
-        return userMapper.add(user);
+    public boolean add(User user) {
+        if (userMapper.add(user) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public int update(User user) {
-        return userMapper.update(user);
+    public boolean update(User user) {
+        if (userMapper.update(user) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public void delete(String id) {
-        userMapper.delete(id);
+    public boolean delete(Long id) {
+        if (userMapper.delete(id) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

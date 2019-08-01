@@ -15,7 +15,7 @@ import static freemarker.template.Configuration.VERSION_2_3_28;
 public class CreateCodeUtils {
     public static void main(String[] args) throws Exception {
 
-        String tableName = "house_img";
+        String tableName = "house";
         String entityName = StrUtil.toCamelCase(tableName);//驼峰命名
         String UpperObjectName = entityName.substring(0, 1).toUpperCase() + entityName.substring(1);// 首字母大写
 
@@ -34,6 +34,8 @@ public class CreateCodeUtils {
 //        printFile("serviceImplTemplate.ftl", root, UpperObjectName + "ServiceImpl.java", UpperObjectName + "\\service\\");
 
         /* 本项目 */
+        /* 生成controller */
+        printFile("controllerTemplate.ftl", root, UpperObjectName + "Controller.java", "\\controller\\");
         /* 生成query */
         printFile("queryTemplate.ftl", root, UpperObjectName + "Query.java", "\\query\\");
         /* 生成service */

@@ -9,17 +9,29 @@ public class ${entity + "ServiceImpl"} implements ${entity + "Service"} {
     @Autowired
     private ${entity + "Mapper"} ${entityName + "Mapper"};
 
-    public int add(${entity} ${entityName}) {
-        return ${entityName + "Mapper"}.add(${entityName});
+    public boolean add(${entity} ${entityName}) {
+        if (${entityName + "Mapper"}.add(${entityName}) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public int update(${entity} ${entityName}) {
-        return ${entityName + "Mapper"}.update(${entityName});
+    public boolean update(${entity} ${entityName}) {
+        if (${entityName + "Mapper"}.update(${entityName}) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public void delete(String id) {
-        ${entityName + "Mapper"}.delete(id);
+    public boolean delete(Long id) {
+        if (${entityName + "Mapper"}.delete(id) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

@@ -15,7 +15,7 @@ public interface HouseMapper {
     int update(@Param("House") House house);
 
     @Delete("delete from `house` where id= #{id}")
-    void delete(@Param("id") String id);
+    int delete(@Param("id") Long id);
 
     @Select("<script> select * from `house` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")
     PageResult<House> selectByPage(@Param("filter") String filter);

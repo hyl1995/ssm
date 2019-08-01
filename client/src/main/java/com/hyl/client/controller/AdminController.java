@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("admin/")
 public class AdminController extends BaseController {
     @Autowired
-    AdminService adminService;
+    private AdminService adminService;
 
     @RequestMapping(value = "login",method = RequestMethod.GET)
     public Result login(AdminQuery query){
@@ -28,7 +28,7 @@ public class AdminController extends BaseController {
     @RequestMapping(value = "update",method = RequestMethod.GET)
     public Result update(Admin admin){
         Result result = new Result(false);
-        if (adminService.update(admin) == 1) {
+        if (adminService.update(admin)) {
             result.setSuccess(true);
         }
         return result;
@@ -37,7 +37,7 @@ public class AdminController extends BaseController {
     @RequestMapping(value = "register",method = RequestMethod.POST)
     public Result add(Admin admin){
         Result result = new Result(false);
-        if (adminService.add(admin) == 1) {
+        if (adminService.add(admin)) {
             result.setSuccess(true);
         }
         return result;

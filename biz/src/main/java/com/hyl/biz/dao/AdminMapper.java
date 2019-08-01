@@ -15,7 +15,7 @@ public interface AdminMapper {
     int update(@Param("Admin")Admin admin);
 
     @Delete("delete from `admin` where id= #{id}")
-    void delete(@Param("id")String id);
+    int delete(@Param("id")Long id);
 
     @Select("<script> select * from `admin` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")
     PageResult<Admin> selectByPage(@Param("filter")String filter);

@@ -15,17 +15,29 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
 
-    public int add(Admin admin) {
-        return adminMapper.add(admin);
+    public boolean add(Admin admin) {
+        if (adminMapper.add(admin) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public int update(Admin admin) {
-        return adminMapper.update(admin);
+    public boolean update(Admin admin) {
+        if (adminMapper.update(admin) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public void delete(String id) {
-        adminMapper.delete(id);
+    public boolean delete(Long id) {
+        if (adminMapper.delete(id) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

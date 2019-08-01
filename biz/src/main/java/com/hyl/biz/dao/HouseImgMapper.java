@@ -15,7 +15,7 @@ public interface HouseImgMapper {
     int update(@Param("HouseImg") HouseImg houseImg);
 
     @Delete("delete from `house_img` where id= #{id}")
-    void delete(@Param("id") String id);
+    int delete(@Param("id") Long id);
 
     @Select("<script> select * from `house_img` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")
     PageResult<HouseImg> selectByPage(@Param("filter") String filter);

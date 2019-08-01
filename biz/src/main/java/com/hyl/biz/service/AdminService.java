@@ -6,11 +6,11 @@ import com.hyl.biz.model.query.AdminQuery;
 import java.util.List;
 
 public interface AdminService {
-    int add(Admin admin);
+    boolean add(Admin admin);
 
-    int update(Admin admin);
+    boolean update(Admin admin);
 
-    void delete(String id);
+    boolean delete(Long id);
 
     List<Admin> selectByList(AdminQuery query);
 

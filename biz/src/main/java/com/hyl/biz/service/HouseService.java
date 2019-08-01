@@ -6,11 +6,11 @@ import com.hyl.biz.model.query.HouseQuery;
 import java.util.List;
 
 public interface HouseService {
-    int add(House house);
+    boolean add(House house);
 
-    int update(House house);
+    boolean update(House house);
 
-    void delete(String id);
+    boolean delete(Long id);
 
     List<House> selectByList(HouseQuery query);
 

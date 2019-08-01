@@ -6,11 +6,11 @@ import com.hyl.biz.model.query.UserQuery;
 import java.util.List;
 
 public interface UserService {
-    int add(User user);
+    boolean add(User user);
 
-    int update(User user);
+    boolean update(User user);
 
-    void delete(String id);
+    boolean delete(Long id);
 
     List<User> selectByList(UserQuery query);
 

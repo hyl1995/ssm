@@ -13,7 +13,7 @@ public interface ${entity + "Mapper"} {
     int update(@Param("${entity}")${entity} ${entityName});
 
     @Delete(" delete from `${datebaseName}` <#noparse>where id= #{id}</#noparse> ")
-    void delete(@Param("id")String id);
+    void delete(@Param("id")Long id);
 
     @Select("<script> select * from `${datebaseName}` <#noparse><where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where></#noparse> </script>")
     PageResult<${entity}> selectByPage(@Param("filter")String filter);

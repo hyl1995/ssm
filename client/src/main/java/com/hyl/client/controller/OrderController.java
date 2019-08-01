@@ -1,56 +1,64 @@
 package com.hyl.client.controller;
 
+import com.hyl.biz.model.Order;
+import com.hyl.biz.model.query.OrderQuery;
 import com.hyl.biz.service.OrderService;
+import com.hyl.core.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("order/")
 public class OrderController {
     @Autowired
-    OrderService orderService;
-//    @RequestMapping(value = "addOrder" ,method = {RequestMethod.POST},produces = "application/json;charset=UTF-8")
-//    public Object addOrder(
-//            @RequestParam("u_id") String u_id,
-//            @RequestParam("h_id") String h_id,
-//            @RequestParam("o_starttime") Date o_starttime,
-//            @RequestParam("time2") String time2,
-//            @RequestParam("o_number") String o_number,
-//            Order order){
-//        order.setO_id(UUID.randomUUID()+""+o_starttime.toString());
-//        order.setO_starttime(o_starttime);
-//        order.setO_status(time2+"申请看房，联系号码为："+o_number);
-//        order.setU_id(u_id);
-//        order.setH_id(h_id);
-//        int s = orderService.orderAdd(order);
-//        if (s==1){return 1;}
-//        else {return 2;}
-//    }
-//    @RequestMapping(value = "listOrder", method = {RequestMethod.GET},produces = "application/json;charset=UTF-8")
-//    public Object listOrder(Order order){
-//        List<Order> orders=orderService.orderListone(order);
-//        return orders;
-//    }
-//        @RequestMapping(value = "updateOrder",method = {RequestMethod.GET})
-//    public Object updateOrder(Order order ){
-//        int a=orderService.orderUpdate(order);
-//        return a;
-//    }
-//    @RequestMapping(value="deleteOrder",method = RequestMethod.GET)
-//    public ModelAndView deleteOrder(Order order){
-//        orderService.orderDelete(order);
-//        ModelAndView map =new ModelAndView();
-//        map.addObject("jg","删除成功");
-//        map.setViewName("jg");
-//        return map;
-//    }
-//    @RequestMapping(value = "ZtAdda",method = RequestMethod.GET ,produces = "application/json;charset=UTF-8")
-//    public Object ZtAdda(Order order){
-//        orderService.orderUpzt(order);
-//        ModelAndView map=new ModelAndView();
-//        map.addObject("jg","修改成功");
-//        map.setViewName("jg");
-//        return map;
-//    }
+    private OrderService orderService;
+
+    @RequestMapping(value = "add", method = {RequestMethod.POST})
+    public Result add(Order order) {
+        Result result = new Result(false);
+        if (orderService.add(order)) {
+            result.setSuccess(true);
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "list", method = {RequestMethod.GET})
+    public Result list(OrderQuery query) {
+        Result result = new Result(true);
+        List<Order> orders = orderService.selectByList(query);
+        result.setData(orders);
+        return result;
+    }
+
+    @RequestMapping(value = "update", method = {RequestMethod.POST})
+    public Result update(Order order) {
+        Result result = new Result(false);
+        if (orderService.update(order)) {
+            result.setSuccess(true);
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public Result delete(Long id) {
+        Result result = new Result(false);
+        if (orderService.delete(id)) {
+            result.setSuccess(true);
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "ZtAdda", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public Object ZtAdda(Order order) {
+        orderService.update(order);
+        ModelAndView map = new ModelAndView();
+        map.addObject("jg", "修改成功");
+        map.setViewName("jg");
+        return map;
+    }
 }

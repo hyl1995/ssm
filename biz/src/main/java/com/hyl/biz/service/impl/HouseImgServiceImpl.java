@@ -24,7 +24,7 @@ public class HouseImgServiceImpl implements HouseImgService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(Long id) {
         houseImgMapper.delete(id);
     }
 

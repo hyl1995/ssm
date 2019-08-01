@@ -1,11 +1,11 @@
 import java.util.List;
 
 public interface ${entity + "Service"} {
-    int add(${entity} ${entityName});
+    boolean add(${entity} ${entityName});
 
-    int update(${entity} ${entityName});
+    boolean update(${entity} ${entityName});
 
-    void delete(String id);
+    boolean delete(Long id);
 
     List<${entity}> selectByList(${entity + "Query"} query);
 

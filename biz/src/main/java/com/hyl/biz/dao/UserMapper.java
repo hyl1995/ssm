@@ -15,7 +15,7 @@ public interface UserMapper {
     int update(@Param("User") User user);
 
     @Delete("delete from `user` where id= #{id}")
-    void delete(@Param("id") String id);
+    int delete(@Param("id") Long id);
 
     @Select("<script> select * from `user` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")
     PageResult<User> selectByPage(@Param("filter") String filter);

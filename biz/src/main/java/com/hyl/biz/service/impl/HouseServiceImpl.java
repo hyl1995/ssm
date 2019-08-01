@@ -15,17 +15,29 @@ public class HouseServiceImpl implements HouseService {
     @Autowired
     private HouseMapper houseMapper;
 
-    public int add(House house) {
-        return houseMapper.add(house);
+    public boolean add(House house) {
+        if (houseMapper.add(house) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public int update(House house) {
-        return houseMapper.update(house);
+    public boolean update(House house) {
+        if (houseMapper.update(house) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public void delete(String id) {
-        houseMapper.delete(id);
+    public boolean delete(Long id) {
+        if (houseMapper.delete(id) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

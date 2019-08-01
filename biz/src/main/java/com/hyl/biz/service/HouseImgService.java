@@ -10,7 +10,7 @@ public interface HouseImgService {
 
     int update(HouseImg houseImg);
 
-    void delete(String id);
+    void delete(Long id);
 
     List<HouseImg> selectByList(HouseImgQuery query);
 
