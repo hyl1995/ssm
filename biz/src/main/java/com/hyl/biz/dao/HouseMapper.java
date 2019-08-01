@@ -8,14 +8,13 @@ import java.util.List;
 
 @Mapper
 public interface HouseMapper {
-
-    @Insert(" insert into `house` ( id,nick_name,pass,name,phone ) values (#{id},#{nickName},#{pass},#{name},#{phone}) ")
+    @Insert("insert into `house` (id,nick_name,pass,name,phone) values (#{id},#{nickName},#{pass},#{name},#{phone})")
     int add(@Param("House") House house);
 
-    @Update("update `house` set nick_name=#{nickName},pass=#{pass},name=#{name},phone=#{phone} where id=#{id} ")
+    @Update("update `house` set nick_name=#{nickName},pass=#{pass},name=#{name},phone=#{phone} where id=#{id}")
     int update(@Param("House") House house);
 
-    @Delete(" delete from `house` where id= #{id} ")
+    @Delete("delete from `house` where id= #{id}")
     void delete(@Param("id") String id);
 
     @Select("<script> select * from `house` <where><if test=\"filter!=null &amp;&amp; filter!=''\">${filter}</if></where> </script>")
