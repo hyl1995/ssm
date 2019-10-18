@@ -4,6 +4,7 @@ import com.hyl.biz.model.User;
 import com.hyl.biz.model.query.UserQuery;
 import com.hyl.biz.service.UserService;
 import com.hyl.core.model.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("user/")
 public class UserController {

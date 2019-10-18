@@ -4,6 +4,7 @@ import com.hyl.biz.model.House;
 import com.hyl.biz.model.query.HouseQuery;
 import com.hyl.biz.service.HouseService;
 import com.hyl.core.model.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("house/")
 public class HouseController {

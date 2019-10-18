@@ -5,11 +5,13 @@ import com.hyl.biz.model.query.AdminQuery;
 import com.hyl.biz.service.AdminService;
 import com.hyl.core.model.BaseController;
 import com.hyl.core.model.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequestMapping("admin/")
 public class AdminController extends BaseController {
@@ -25,7 +27,7 @@ public class AdminController extends BaseController {
         return result;
     }
 
-    @RequestMapping(value = "update",method = RequestMethod.GET)
+    @RequestMapping(value = "update",method = RequestMethod.POST)
     public Result update(Admin admin){
         Result result = new Result(false);
         if (adminService.update(admin)) {

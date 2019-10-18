@@ -1,4 +1,4 @@
-package com.hyl.biz.model;
+package com.hyl.core.model;
 
 import java.io.Serializable;
 
