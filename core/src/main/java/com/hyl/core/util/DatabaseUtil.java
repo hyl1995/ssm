@@ -4,17 +4,18 @@ import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.Field;
 import java.sql.*;
-import java.util.*;
-import java.util.Date;
-import java.util.stream.IntStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 public class DatabaseUtil {
 
     private static final String SQL = "SELECT * FROM ";// 数据库操作
-    private static Map<String, String> columnTypeMap = new HashMap<>();
+    private static Map<String, String> javaTypeMap = new HashMap<>();
+    private static Map<String, String> jdbcTypeMap = new HashMap<>();
 
     static {
         try {
@@ -22,10 +23,17 @@ public class DatabaseUtil {
         } catch (ClassNotFoundException e) {
             log.error("can not load jdbc driver", e);
         }
-        columnTypeMap.put("BIGINT", "Long");
-        columnTypeMap.put("VARCHAR", "String");
-        columnTypeMap.put("INT", "Integer");
-        columnTypeMap.put("DATETIME", "Date");
+        javaTypeMap.put("BIGINT", "Long");
+        javaTypeMap.put("VARCHAR", "String");
+        javaTypeMap.put("INT", "Integer");
+        javaTypeMap.put("DATETIME", "Date");
+        javaTypeMap.put("DECIMAL", "BigDecimal");
+        javaTypeMap.put("TINYINT UNSIGNED", "Integer");
+        javaTypeMap.put("TINYINT", "Integer");
+
+        jdbcTypeMap.put("TINYINT UNSIGNED", "TINYINT");
+        jdbcTypeMap.put("DATETIME", "TIMESTAMP");
+        jdbcTypeMap.put("INT", "INTEGER");
     }
 
     /**
@@ -215,8 +223,11 @@ public class DatabaseUtil {
 
             for (int i = 2; i <= rsmd.getColumnCount(); i++) {
                 Column column = new Column();
-                column.setColumnName(StrUtil.toCamelCase(rsmd.getColumnName(i)));
-                column.setColumnType(columnTypeMap.get(rsmd.getColumnTypeName(i)));
+//                System.out.println(rsmd.getColumnTypeName(i));
+                column.setColumnName(rsmd.getColumnName(i));
+                column.setColumnType(jdbcTypeMap.get(rsmd.getColumnTypeName(i)) != null ? jdbcTypeMap.get(rsmd.getColumnTypeName(i)) : rsmd.getColumnTypeName(i));
+                column.setJavaName(StrUtil.toCamelCase(rsmd.getColumnName(i)));
+                column.setJavaType(javaTypeMap.get(rsmd.getColumnTypeName(i)));
                 column.setComment(columnComments.get(i-1));
                 columns.add(column);
             }
@@ -239,7 +250,11 @@ public class DatabaseUtil {
     public static class Column {
         private String columnName;
 
+        private String javaName;
+
         private String columnType;
+
+        private String javaType;
 
         private String comment;
     }
