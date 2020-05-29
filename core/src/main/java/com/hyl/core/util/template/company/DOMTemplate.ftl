@@ -1,12 +1,11 @@
 package com.alib.tunnel.database.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 public class ${entity} {
@@ -14,10 +13,11 @@ public class ${entity} {
     private Long id;
     <#list data as column>
 
-    /**
-    * ${column.comment}
-    */
-    private ${column.columnType} ${column.columnName};
+    @ApiModelProperty(value = "${column.comment}")
+    <#if column.javaType == "Date">
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    </#if>
+    private ${column.javaType} ${column.javaName};
     </#list>
 
 }
