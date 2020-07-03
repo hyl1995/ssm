@@ -1,6 +1,6 @@
 package com.hyl.core.util;
 
-import java.nio.charset.Charset;
+import java.lang.reflect.Field;
 
 /**
  * @description: com.hyl.core.util
@@ -63,20 +63,28 @@ public class EncodingUtil {
         return "未识别编码格式";
     }
 
-    public static void main(String[] args) {
-        //获取系统默认编码
-        System.out.println("系统默认编码：" + System.getProperty("file.encoding")); //查询结果GBK
-        //系统默认字符编码
-        System.out.println("系统默认字符编码：" + Charset.defaultCharset()); //查询结果GBK
-        //操作系统用户使用的语言
-        System.out.println("系统默认语言：" + System.getProperty("user.language")); //查询结果zh
-
-        System.out.println();
-
-        String s1 = "hi, nice to meet you!";
-        String s2 = "hi, 我来了！";
-
-        System.out.println(getEncoding(s1));
-        System.out.println(getEncoding(s2));
+    public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
+//        //获取系统默认编码
+//        System.out.println("系统默认编码：" + System.getProperty("file.encoding")); //查询结果GBK
+//        //系统默认字符编码
+//        System.out.println("系统默认字符编码：" + Charset.defaultCharset()); //查询结果GBK
+//        //操作系统用户使用的语言
+//        System.out.println("系统默认语言：" + System.getProperty("user.language")); //查询结果zh
+//
+//        System.out.println();
+//
+//        String s1 = "hi, nice to meet you!";
+//        String s2 = "hi, 我来了！";
+//
+//        System.out.println(getEncoding(s1));
+//        System.out.println(getEncoding(s2));
+        String a = new String("AAA");
+        Class clazz = a.getClass();
+        Field field = clazz.getDeclaredField("value");
+        field.setAccessible(true);
+        char[] ch = (char[]) field.get(a);
+        ch[0] = 'B';
+        System.out.println(a);
+        System.out.println("AAA");
     }
 }
