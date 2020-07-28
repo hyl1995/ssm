@@ -29,11 +29,19 @@ public class DatabaseUtil {
         javaTypeMap.put("DATETIME", "Date");
         javaTypeMap.put("DECIMAL", "BigDecimal");
         javaTypeMap.put("TINYINT UNSIGNED", "Integer");
+        javaTypeMap.put("INT UNSIGNED", "Integer");
+        javaTypeMap.put("BIGINT UNSIGNED", "Long");
         javaTypeMap.put("TINYINT", "Integer");
+        javaTypeMap.put("TIME", "Date");
+        javaTypeMap.put("BIT", "Boolean");
 
         jdbcTypeMap.put("TINYINT UNSIGNED", "TINYINT");
+        jdbcTypeMap.put("INT UNSIGNED", "INTEGER");
+        jdbcTypeMap.put("BIGINT UNSIGNED", "BIGINT");
         jdbcTypeMap.put("DATETIME", "TIMESTAMP");
+        jdbcTypeMap.put("TIME", "TIMESTAMP");
         jdbcTypeMap.put("INT", "INTEGER");
+        jdbcTypeMap.put("BIT", "BOOLEAN");
     }
 
     /**
@@ -222,8 +230,8 @@ public class DatabaseUtil {
             }
 
             for (int i = 2; i <= rsmd.getColumnCount(); i++) {
-                Column column = new Column();
 //                System.out.println(rsmd.getColumnTypeName(i));
+                Column column = new Column();
                 column.setColumnName(rsmd.getColumnName(i));
                 column.setColumnType(jdbcTypeMap.get(rsmd.getColumnTypeName(i)) != null ? jdbcTypeMap.get(rsmd.getColumnTypeName(i)) : rsmd.getColumnTypeName(i));
                 column.setJavaName(StrUtil.toCamelCase(rsmd.getColumnName(i)));
