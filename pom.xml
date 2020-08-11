@@ -64,6 +64,8 @@
         <poi.version>4.1.0</poi.version>
         <!--工具大全-->
         <hutool.version>5.3.5</hutool.version>
+        <!--swagger-ui knife4j-->
+        <knife4j.version>2.0.4</knife4j.version>
     </properties>
 
     <dependencyManagement>
@@ -360,6 +362,18 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+
+            <!--swagger2 knife4j-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-ui</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

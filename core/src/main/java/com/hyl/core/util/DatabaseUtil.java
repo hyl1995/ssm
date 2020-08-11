@@ -26,14 +26,14 @@ public class DatabaseUtil {
         javaTypeMap.put("BIGINT", "Long");
         javaTypeMap.put("VARCHAR", "String");
         javaTypeMap.put("INT", "Integer");
-        javaTypeMap.put("DATETIME", "Date");
         javaTypeMap.put("DECIMAL", "BigDecimal");
         javaTypeMap.put("TINYINT UNSIGNED", "Integer");
         javaTypeMap.put("INT UNSIGNED", "Integer");
         javaTypeMap.put("BIGINT UNSIGNED", "Long");
         javaTypeMap.put("TINYINT", "Integer");
-        javaTypeMap.put("TIME", "Date");
         javaTypeMap.put("BIT", "Boolean");
+        javaTypeMap.put("DATETIME", "Date");
+        javaTypeMap.put("TIME", "Date");
 
         jdbcTypeMap.put("TINYINT UNSIGNED", "TINYINT");
         jdbcTypeMap.put("INT UNSIGNED", "INTEGER");
