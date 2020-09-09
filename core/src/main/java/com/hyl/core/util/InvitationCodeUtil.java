@@ -118,6 +118,26 @@ public class InvitationCodeUtil {
 
     }
 
+    /**
+     * 获取不重复随机码（取当前时间戳转化为十六进制） 秒级并发
+     * @author ShelWee
+     * @return
+     */
+    public static String timeToHex(){
+        return Integer.toHexString((int)(System.currentTimeMillis()/1000));
+    }
+
+    /**
+     * 获取不重复随机码 毫秒级并发
+     * @author ShelWee
+     * @return
+     */
+    public static String timeToCode(){
+        long time = System.currentTimeMillis();
+        String invite = idToCode(time);
+        return invite;
+    }
+
     public static void main(String[] args) {
         String code = idToCode(11606L);
         System.out.println(code);

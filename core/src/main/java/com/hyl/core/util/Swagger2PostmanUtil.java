@@ -26,9 +26,10 @@ import java.util.Set;
  * swagger转postman json文件
  */
 public class Swagger2PostmanUtil {
-    public static final String name = "课程购买";
-    public static final String version = "API_3.2.0";
-    public static final String token = "";
+    public static final String name = "话题优化";
+    public static final String version = "API_3.4.0";
+    public static final String token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjVCQzcxQzkwQTUwOTVCNjA4OEU4MDQ1QTk3RDE1REIyQUJCOEQ4QzUiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJXOGNja0tVSlcyQ0k2QVJhbDlGZHNxdTQyTVUifQ.eyJuYmYiOjE1OTkwMDg0OTgsImV4cCI6MTU5OTA2NjA5OCwiaXNzIjoiaHR0cHM6Ly90c2FkbWluLnF1YW56aGFvLmNvIiwiYXVkIjpbImh0dHBzOi8vdHNhZG1pbi5xdWFuemhhby5jby9yZXNvdXJjZXMiLCJBY2NvdW50QXBpIiwiTWVtYmVyQXBpIiwiTVlXQXBpIiwiUGF5QXBpIiwic21zYXBpIl0sImNsaWVudF9pZCI6Ik1lbWJlckZyb250IiwiUHJvamVjdEtleSI6IjI5YTAzZGEzMmY0ODQ0YTliYTBlNjdhNGUwMDg2MmY2IiwiVXNlclNpZ25JZCI6IjEzIiwic3ViIjoiOTUwIiwiYXV0aF90aW1lIjoxNTk5MDA4NDk4LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImN1c3RvbS5wcm9maWxlIiwiZW1haWwiLCJvcGVuaWQiLCJwcm9maWxlIiwicm9sZXMiLCJBY2NvdW50QXBpIiwiTWVtYmVyQXBpIiwiTVlXQXBpIiwiUGF5QXBpIiwic21zYXBpLnNlbmQiLCJvZmZsaW5lX2FjY2VzcyJdLCJhbXIiOlsicHdkIl19.f2hmZIzMC-u_WCaBCP2X1qGd_x4CMTfBeAOialdbEt5To8_smMemeX8pRqM7IIOjRU4t4o07p5h06yg1RauzdZHacDrY0J1BH6hNCxusQSjGzVpZE0GQGjF4E3wScanfpfu45nvbFppHw4k1svPWM1gCs-pWwqMSkgSf5GssfXMeKRQAnj_STaN1rrHF3qKMFIncD6p_E9gIMGaUzfblMnmckWBfW3gUFX1wY6cEbJv4-Zvk6FZMPUdyFDrcrzpNDxzCxe-GNJo8k5d6JPIllrJHl_Iomy7FcHJsJZVLd_JZyeMgSBTfrsgN-EmMZtC8HXgcM9_gHe3WdvkvUVOL4w";
+    public static final String scanPath = "com.alib.controller";
 
     public static void main(String[] args) {
 
@@ -59,7 +60,7 @@ public class Swagger2PostmanUtil {
      */
     private static JSONArray scanPackge() {
         JSONArray item = new JSONArray();
-        Set<Class<?>> set = ClassUtil.scanPackage("com.startom.web.controller.OrderController");
+        Set<Class<?>> set = ClassUtil.scanPackage(scanPath);
         set.forEach(clazz -> {
             Method[] methods = clazz.getMethods();
             for (Method method : methods) {
@@ -92,7 +93,7 @@ public class Swagger2PostmanUtil {
     }
 
     /**
-     * 类的映射路径
+     * 类上的RequestMapping获取
      * @param clazz
      * @return
      */
@@ -221,7 +222,17 @@ public class Swagger2PostmanUtil {
                 if ("bizScenario".equals(field.getName()) || "serialVersionUID".equals(field.getName())) {
                     break;
                 }
-                params.put(field.getName(), "");
+//                Null at = field.getAnnotation(Null.class);
+//                if (at != null) {
+//                    continue;
+//                }
+                if (field.getName().equals("pageNum")) {
+                    params.put(field.getName(), 1);
+                } else if (field.getName().equals("pageSize")) {
+                    params.put(field.getName(), 10);
+                } else {
+                    params.put(field.getName(), "");
+                }
             }
         }
         return params.toJSONString();

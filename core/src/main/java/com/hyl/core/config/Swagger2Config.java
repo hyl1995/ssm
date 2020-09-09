@@ -1,8 +1,7 @@
 package com.hyl.core.config;
 
 import com.google.common.base.Optional;
-import com.hyl.core.ApiVersions;
-import com.hyl.core.annotation.ApiVersion;
+import com.hyl.core.ApiVersion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -35,13 +34,13 @@ public class Swagger2Config {
     public Docket vApp100(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .groupName(ApiVersions.API_100)
+                .groupName(ApiVersion.API_100)
                 .select()
                 .apis(input -> {
-                    Optional<ApiVersion> apiVersionOptional = input.findAnnotation(ApiVersion.class);
+                    Optional<com.hyl.core.annotation.ApiVersion> apiVersionOptional = input.findAnnotation(com.hyl.core.annotation.ApiVersion.class);
                     if (apiVersionOptional.isPresent()) {
-                        ApiVersion apiVersion = apiVersionOptional.get();
-                        if (apiVersion != null && Arrays.asList(apiVersion.group()).contains(ApiVersions.API_100)) {
+                        com.hyl.core.annotation.ApiVersion apiVersion = apiVersionOptional.get();
+                        if (apiVersion != null && Arrays.asList(apiVersion.group()).contains(ApiVersion.API_100)) {
                             return true;
                         }
                     }

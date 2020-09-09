@@ -1,5 +1,7 @@
 package com.hyl.core.util;
 
+import cn.hutool.core.date.DateUnit;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -83,6 +85,33 @@ public class LocalDateUtil {
         if (field == ChronoUnit.YEARS) return period.getYears();
         if (field == ChronoUnit.MONTHS) return period.getYears() * 12 + period.getMonths();
         return field.between(startTime, endTime);
+    }
+
+    /**
+     * 1小时内显示分钟，24小时内显示小时，30天前天，12个月内显示月，超过12个月显示年
+     * @param before
+     * @return
+     */
+    public static String transferCN(long before) {
+        long current = System.currentTimeMillis();
+        long interval = current - before;
+        if (interval <= 0) {
+            return null;
+        }
+        if (interval <= DateUnit.MINUTE.getMillis()) {
+            return "刚刚";
+        } else if (interval <= DateUnit.HOUR.getMillis()) {
+            return (interval/DateUnit.MINUTE.getMillis()) + "分钟前";
+        } else if (interval <= DateUnit.DAY.getMillis()) {
+            return (interval/DateUnit.HOUR.getMillis()) + "小时前";
+        } else if (interval <= (DateUnit.DAY.getMillis()) * 30) {
+            return (interval/DateUnit.DAY.getMillis()) + "天前";
+        } else if (interval <= (DateUnit.DAY.getMillis() * 30 * 12)) {
+            return (interval/(DateUnit.DAY.getMillis() * 30)) + "月前";
+        } else {
+            return (interval/(DateUnit.DAY.getMillis() * 30 * 12)) + "年前";
+        }
+
     }
 
     public static void main(String[] args) {
