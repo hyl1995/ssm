@@ -23,8 +23,10 @@
 
         <!--MongoDB-->
         <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver</artifactId>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>3.0.4.RELEASE</version>
         </dependency>
+
     </dependencies>
 </project>
