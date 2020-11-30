@@ -34,6 +34,7 @@ public class DatabaseUtil {
         javaTypeMap.put("BIT", "Boolean");
         javaTypeMap.put("DATETIME", "Date");
         javaTypeMap.put("TIME", "Date");
+        javaTypeMap.put("TIMESTAMP", "Date");
 
         jdbcTypeMap.put("TINYINT UNSIGNED", "TINYINT");
         jdbcTypeMap.put("INT UNSIGNED", "INTEGER");
@@ -42,6 +43,7 @@ public class DatabaseUtil {
         jdbcTypeMap.put("TIME", "TIMESTAMP");
         jdbcTypeMap.put("INT", "INTEGER");
         jdbcTypeMap.put("BIT", "BOOLEAN");
+        jdbcTypeMap.put("TIMESTAMP", "Date");
     }
 
     /**
