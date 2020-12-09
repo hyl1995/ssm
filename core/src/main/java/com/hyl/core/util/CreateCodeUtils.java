@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import static freemarker.template.Configuration.VERSION_2_3_28;
 import static freemarker.template.Configuration.VERSION_2_3_30;
 
 public class CreateCodeUtils {
@@ -19,7 +18,7 @@ public class CreateCodeUtils {
     public static final String USERNAME = "账号";
     public static final String PASSWORD = "密码";
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         String tableName = "查询表名";
         String entityName = StrUtil.toCamelCase(tableName.substring(2));//驼峰命名
@@ -31,10 +30,26 @@ public class CreateCodeUtils {
         root.put("entityName", entityName);
         root.put("data", DatabaseUtil.columns(tableName));
 
-        /* 生成query */
-        printFile("ControllerTemplate.ftl", root, UpperObjectName + "Controller.java", UpperObjectName+"\\");
+        Integer storeType = 1;//存储位置 1-按业务类 2-按功能类
+
         /* 生成serviceImpl */
-        printFile("DOMTemplate.ftl", root, UpperObjectName + ".java", UpperObjectName+"\\");
+        printFile("ControllerTemplate.ftl", root, UpperObjectName + "Controller.java", storeType);
+        /* 生成serviceImpl */
+        printFile("ServiceImplTemplate.ftl", root, UpperObjectName + "ServiceImpl.java", storeType);
+        /* 生成serviceImpl */
+        printFile("ServiceTemplate.ftl", root, UpperObjectName + "ServiceI.java", storeType);
+        /* 生成serviceImpl */
+        printFile("GatewayTemplate.ftl", root, UpperObjectName + "Gateway.java", storeType);
+        /* 生成serviceImpl */
+        printFile("RepositoryTemplate.ftl", root, UpperObjectName + "Repository.java", storeType);
+        /* 生成serviceImpl */
+        printFile("MapperTemplate.ftl", root, UpperObjectName + "Mapper.java", storeType);
+        /* 生成serviceImpl */
+        printFile("XmlTemplate.ftl", root, UpperObjectName + "Mapper.xml", storeType);
+        /* 生成serviceImpl */
+        printFile("DOTemplate.ftl", root, UpperObjectName + "DO.java", storeType);
+        /* 生成serviceImpl */
+        printFile("DOMTemplate.ftl", root, UpperObjectName + ".java", storeType);
 
         /* 本项目 */
         /* 生成controller */
@@ -42,7 +57,7 @@ public class CreateCodeUtils {
 //        /* 生成query */
 //        printFile("queryTemplate.ftl", root, UpperObjectName + "Query.java", "\\query\\");
 //        /* 生成service */
-//        printFile("serviceTemplate.ftl", root, UpperObjectName + "Service.java", "\\service\\");
+//        printFile("ServiceTemplate.ftl", root, UpperObjectName + "Service.java", "\\service\\");
 //        /* 生成serviceImpl */
 //        printFile("serviceImplTemplate.ftl", root, UpperObjectName + "ServiceImpl.java", "\\service\\impl\\");
 //        /* 生成mapper */
@@ -51,7 +66,17 @@ public class CreateCodeUtils {
         System.out.println("生成完毕！");
     }
 
-    public static void printFile(String ftlName, Map<String, Object> root, String outFile, String filePath) throws Exception {
+    public static void printFile(String ftlName, Map<String, Object> root, String outFile, Integer storeType) {
+        String filePath = null;
+        if (storeType.equals(1)) {
+            filePath = root.get("entity") + "\\";
+        } else if (storeType.equals(2)) {
+            filePath = "\\接口\\" + ftlName.split("Template")[0] + "\\";
+        }
+        printFile(ftlName, root, outFile, filePath);
+    }
+
+    public static void printFile(String ftlName, Map<String, Object> root, String outFile, String filePath) {
         try {
             File file = new File("C:\\createCode\\" + filePath + outFile);
             if (!file.getParentFile().exists()) { // 判断有没有父路径，就是判断文件整个路径是否存在
