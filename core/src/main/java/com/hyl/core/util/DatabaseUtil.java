@@ -43,7 +43,7 @@ public class DatabaseUtil {
         jdbcTypeMap.put("TIME", "TIMESTAMP");
         jdbcTypeMap.put("INT", "INTEGER");
         jdbcTypeMap.put("BIT", "BOOLEAN");
-        jdbcTypeMap.put("TIMESTAMP", "Date");
+        jdbcTypeMap.put("TIMESTAMP", "TIMESTAMP");
     }
 
     /**
