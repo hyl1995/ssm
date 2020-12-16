@@ -23,6 +23,7 @@ public class DatabaseUtil {
         } catch (ClassNotFoundException e) {
             log.error("can not load jdbc driver", e);
         }
+        //java实体类用
         javaTypeMap.put("BIGINT", "Long");
         javaTypeMap.put("VARCHAR", "String");
         javaTypeMap.put("INT", "Integer");
@@ -35,7 +36,9 @@ public class DatabaseUtil {
         javaTypeMap.put("DATETIME", "Date");
         javaTypeMap.put("TIME", "Date");
         javaTypeMap.put("TIMESTAMP", "Date");
+        javaTypeMap.put("JSON", "String");
 
+        //xxxMapper.xml用
         jdbcTypeMap.put("TINYINT UNSIGNED", "TINYINT");
         jdbcTypeMap.put("INT UNSIGNED", "INTEGER");
         jdbcTypeMap.put("BIGINT UNSIGNED", "BIGINT");
@@ -44,6 +47,7 @@ public class DatabaseUtil {
         jdbcTypeMap.put("INT", "INTEGER");
         jdbcTypeMap.put("BIT", "BOOLEAN");
         jdbcTypeMap.put("TIMESTAMP", "TIMESTAMP");
+        jdbcTypeMap.put("JSON", "VARCHAR");
     }
 
     /**
