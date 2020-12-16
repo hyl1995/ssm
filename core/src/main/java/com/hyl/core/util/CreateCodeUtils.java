@@ -6,9 +6,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 import static freemarker.template.Configuration.VERSION_2_3_30;
 
@@ -20,18 +18,31 @@ public class CreateCodeUtils {
 
     public static void main(String[] args) {
 
-        String tableName = "查询表名";
-        String entityName = StrUtil.toCamelCase(tableName.substring(2));//驼峰命名
-        String UpperObjectName = entityName.substring(0, 1).toUpperCase() + entityName.substring(1);// 首字母大写
+        List<String> tableNames = new ArrayList<>();
+        tableNames.add("t_user_sing_in_template");
+        tableNames.add("t_user_sing_in_template_fields");
+        tableNames.add("t_user_sing_in_template_medias");
+        tableNames.add("t_user_sing_in_template_result");
+        tableNames.add("t_user_sing_in_template_result_explorer");
 
-        Map<String, Object> root = new HashMap<>();
-        root.put("datebaseName", tableName);
-        root.put("entity", UpperObjectName);
-        root.put("entityName", entityName);
-        root.put("data", DatabaseUtil.columns(tableName));
+        Integer storeType = 2;//存储位置 1-按业务类 2-按功能类
+        tableNames.forEach(tableName -> {
+            String entityName = StrUtil.toCamelCase(tableName.substring(2));//驼峰命名
+            String UpperObjectName = entityName.substring(0, 1).toUpperCase() + entityName.substring(1);// 首字母大写
 
-        Integer storeType = 1;//存储位置 1-按业务类 2-按功能类
+            Map<String, Object> root = new HashMap<>();
+            root.put("datebaseName", tableName);
+            root.put("entity", UpperObjectName);
+            root.put("entityName", entityName);
+            root.put("data", DatabaseUtil.columns(tableName));
 
+            selectTemplate(root, UpperObjectName, storeType);
+        });
+
+        System.out.println("生成完毕！");
+    }
+
+    public static void selectTemplate(Map<String, Object> root, String UpperObjectName, Integer storeType) {
         /* 生成serviceImpl */
         printFile("ControllerTemplate.ftl", root, UpperObjectName + "Controller.java", storeType);
         /* 生成serviceImpl */
@@ -62,8 +73,6 @@ public class CreateCodeUtils {
 //        printFile("serviceImplTemplate.ftl", root, UpperObjectName + "ServiceImpl.java", "\\service\\impl\\");
 //        /* 生成mapper */
 //        printFile("mapperTemplate.ftl", root, UpperObjectName + "Mapper.java", "\\dao\\");
-
-        System.out.println("生成完毕！");
     }
 
     public static void printFile(String ftlName, Map<String, Object> root, String outFile, Integer storeType) {
@@ -71,7 +80,7 @@ public class CreateCodeUtils {
         if (storeType.equals(1)) {
             filePath = root.get("entity") + "\\";
         } else if (storeType.equals(2)) {
-            filePath = "\\接口\\" + ftlName.split("Template")[0] + "\\";
+            filePath = "\\" + ftlName.split("Template")[0] + "\\";
         }
         printFile(ftlName, root, outFile, filePath);
     }
