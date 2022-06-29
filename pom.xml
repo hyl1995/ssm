@@ -61,7 +61,7 @@
         <commons-io.version>2.6</commons-io.version>
         <commons-codec.version>1.10</commons-codec.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
-        <poi.version>4.1.0</poi.version>
+        <poi.version>4.1.1</poi.version>
         <!--工具大全-->
         <hutool.version>5.3.5</hutool.version>
         <!--swagger-ui knife4j-->
